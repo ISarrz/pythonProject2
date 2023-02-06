@@ -3,7 +3,8 @@ from PyQt5.QtWidgets import QWidget, QApplication
 from PyQt5.QtGui import QPainter
 from random import randint
 from PyQt5 import uic
-
+from PyQt5.QtGui import QPainter, QBrush, QPen
+from PyQt5.QtCore import Qt
 
 class Example(QWidget):
     def __init__(self):
@@ -22,6 +23,8 @@ class Example(QWidget):
         if self.check:
             qp = QPainter()
             qp.begin(self)
+            qp.setPen(QPen(Qt.yellow, 8, Qt.SolidLine))
+            qp.setBrush(QBrush(Qt.yellow, Qt.SolidPattern))
             r = randint(10, 200)
             x, y = self.size().width(), self.size().height()
             qp.drawEllipse((x - r) // 2, (y - r) // 2, r, r)
